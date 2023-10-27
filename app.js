@@ -65,7 +65,7 @@ function foo1(){
 
 
 function deleteall(){
-    getul.innerHTML = ''
+    getul.innerHTML = '' 
 
 }
 
