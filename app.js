@@ -51,12 +51,13 @@ function foo1(){
     var editbtnText = document.createTextNode('Edit');
     // AppendChild krwaiya text node ko & edit button ko
     editbtn.appendChild(editbtnText);
-    // edit button lagyah list item ke sath
-    li.appendChild(editbtn)
     // onclick set kya edit button par
-    editbtn.setAttribute('onclick', 'editfun(this)')
-    // bootstrap lgai delete button par
-    deletebtn.setAttribute('class', 'btn btn-danger');
+    editbtn.setAttribute('onclick', 'editfun(this)')    
+        // edit button lagyah list item ke sath
+    li.appendChild(editbtn)
+        // bootstrap lgai delete button par
+    deletebtn.setAttribute( 'class', 'btn btn-danger')
+    deletebtn.setAttribute('onclick', 'del(this)');
     // bootstrap lgai edit button par
     editbtn.setAttribute('class', 'btn btn-info aaa')
 
@@ -65,5 +66,10 @@ function foo1(){
 
 function deleteall(){
     getul.innerHTML = ''
+
 }
 
+
+function del(e){
+    e.parentNode.remove()
+}
