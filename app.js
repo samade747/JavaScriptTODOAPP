@@ -60,9 +60,10 @@ function foo1(){
     // bootstrap lgai edit button par
     editbtn.setAttribute('class', 'btn btn-info aaa')
 
-
-
-
-
-
 }
+
+
+function deleteall(){
+    getul.innerHTML = ''
+}
+
