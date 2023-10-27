@@ -56,7 +56,7 @@ function foo1(){
         // edit button lagyah list item ke sath
     li.appendChild(editbtn)
         // bootstrap lgai delete button par
-    deletebtn.setAttribute( 'class', 'btn btn-danger')
+    deletebtn.setAttribute( 'class', 'btn btn-danger aaa')
     deletebtn.setAttribute('onclick', 'del(this)');
     // bootstrap lgai edit button par
     editbtn.setAttribute('class', 'btn btn-info aaa')
