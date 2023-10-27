@@ -73,3 +73,9 @@ function deleteall(){
 function del(e){
     e.parentNode.remove()
 }
+
+
+function editfun(e){
+    var userEdit = prompt('Enter Edit value' ,e.parentNode.firstChild.nodeValue)
+    e.parentNode.firstChild.nodeValue = userEdit;
+}
