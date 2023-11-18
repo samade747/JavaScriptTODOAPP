@@ -33,7 +33,13 @@ function foo1(){
     var li = document.createElement('li')
     var litext = document.createTextNode(ca.value);
     li.appendChild(litext)
+
+    savingtoLocalStorage(li.innerText.trim());
+
+
     getul.appendChild(li)
+
+
     ca.value = ''
     // button banayah
     var deletebtn = document.createElement('button');
@@ -61,11 +67,53 @@ function foo1(){
     // bootstrap lgai edit button par
     editbtn.setAttribute('class', 'btn btn-info aaa')
 
+    loadAndDisplayItems();
+
+}
+
+function savingtoLocalStorage(itemText){
+    // Retriving Existing items in our local storage
+    var items = JSON.parse(localStorage.getItem('items')) || [] ;
+    // Now we add new items into array, ab ham new item array mai add krengai
+    items.push(itemText);
+    // save the updated array back to local storage
+    localStorage.setItem('items', JSON.stringify(items));
+    
+}
+
+function loadAndDisplayItems() {
+    var items = JSON.parse(localStorage.getItem('items')) || [];
+    var ul = document.getElementById('ul');
+
+    // Clear existing items in the ul
+    ul.innerHTML = '';
+
+    // Loop through the items and create li elements
+    items.forEach(function (itemText) {
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode(itemText));
+
+        var deletebtn = document.createElement('button');
+        deletebtn.appendChild(document.createTextNode('del'));
+        deletebtn.setAttribute('onclick', 'del(this.parentNode)');
+        deletebtn.setAttribute('class', 'btn btn-danger aaa');
+        li.appendChild(deletebtn);
+
+        var editbtn = document.createElement('button');
+        editbtn.appendChild(document.createTextNode('Edit'));
+        editbtn.setAttribute('onclick', 'editfun(this)');
+        editbtn.setAttribute('class', 'btn btn-info aaa');
+        li.appendChild(editbtn);
+
+        li.style.listStyleType = 'none';
+        ul.appendChild(li);
+    });
 }
 
 
 function deleteall(){
     getul.innerHTML = '' 
+    localStorage.clear()
 
 }
 
@@ -79,3 +127,5 @@ function editfun(e){
     var userEdit = prompt('Enter Edit value' ,e.parentNode.firstChild.nodeValue)
     e.parentNode.firstChild.nodeValue = userEdit;
 }
+
+loadAndDisplayItems();
